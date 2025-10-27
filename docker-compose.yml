@@ -1,0 +1,25 @@
+services:
+  marketplace-api:
+    container_name: marketplace-api
+    image: marketplace-api:1.0.0
+    build:
+      context: .
+      args:
+        - API_PORT=${API_PORT}
+    ports:
+      - 127.0.0.1:${API_PORT}:${API_PORT}
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      TZ: Asia/Jakarta
+    volumes:
+      - ../public:/vol/public
+    restart: always
+    networks:
+      - shared-networks
+
+networks:
+  shared-networks:
+    name: shared-networks
+    external: true

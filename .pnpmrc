@@ -1,0 +1,4 @@
+engine-strict=true
+ignore-scripts=false
+auto-install-peers=true
+resolution-mode=highest
