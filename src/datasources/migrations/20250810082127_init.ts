@@ -55,7 +55,7 @@ export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable('products', (table) => {
     table.increments('id').primary();
     table.integer('category_id').unsigned().notNullable().references('id').inTable('categories');
-    table.string('name', 255).notNullable();
+    table.string('name', 255).unique().notNullable();
     table.string('slug', 255).unique().notNullable();
     table.string('image', 100).nullable();
     table.text('description').notNullable();
